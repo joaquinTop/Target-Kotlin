@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="signInUsernameWrapper" type="id" />
+    <item name="signInBackgroundImage" type="id" />
+    <item name="signInPasswordWrapper" type="id" />
+    <item name="githubUsernameTextView" type="id" />
+    <item name="githubReposTextView" type="id" />
+    <item name="getGithubInfoButton" type="id" />
+    <item name="signInButton" type="id" />
+    <item name="forgotYourPassword" type="id" />
+    <item name="connectWithFacebook" type="id" />
+    <item name="appTitleTextView" type="id" />
+    <item name="signInSeparator" type="id" />
+    <item name="signUpLink" type="id" />
+</resources>

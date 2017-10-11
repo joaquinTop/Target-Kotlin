@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EFC638</color>
+    <color name="colorPrimaryDark">#C6A321</color>
+    <color name="colorAccent">#FFF</color>
+    <color name="defaultTextColor">#000</color>
+    <color name="secondaryTextColor">#FFF</color>
+    <color name="colorSecondary">#2FBCF7</color>
+    <color name="colorSecondaryDark">#2FBCF7</color>
+    <color name="primaryBackgroundColor">#FFF</color>
+    <color name="secondaryBackgroundColor">#000</color>
+    <color name="buttonBackgroundColor">#000</color>
+    <color name="pressedButtonBackgroundColor">#80000000</color>
+    <color name="facebookPrimaryColor">#3b5998</color>
+    <color name="errorRed">#ED5366</color>#
+</resources>

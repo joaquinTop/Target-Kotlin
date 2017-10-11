@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TargetMVD</string>
+    <string name="app_title">TARGET MVD</string>
+    <string name="sign_in_email_hint">Email</string>
+    <string name="sign_in_button">SIGN IN</string>
+    <string name="sign_in_password_hint">Password</string>
+    <string name="about">About</string>
+    <string name="about_message">About TargetMVD</string>
+    <string name="sigIn_alert_invalid_user_title">Oops..</string>
+    <string name="sigIn_alert_invalid_user_message">Some fields seems to be empty</string>
+    <string name="dialog_button_close">OK</string>
+    <string name="signInError">There was a problem at sign in</string>
+    <string name="forgot_your_password_text">Forgot your password?</string>
+    <string name="connect_with_facebook_text">CONNECT WITH FACEBOOK</string>
+    <string name="sign_up_text">SIGN UP</string>
+</resources>

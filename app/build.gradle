@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.joaquin.toptierlabs.targetmvd"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+
+        packagingOptions {
+            exclude 'META-INF/rxjava.properties'
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "API_URL", "\"http://target-mvd-api.herokuapp.com/api/v1/\"")
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "API_URL", "\"http://target-mvd-api.herokuapp.com/api/v1/\"")
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.0.1'
+    implementation 'com.android.support:design:26.0.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
+
+    // Anko
+    implementation "org.jetbrains.anko:anko-sdk15:$anko_version"
+    implementation "org.jetbrains.anko:anko-support-v4:$anko_version"
+    implementation 'org.jetbrains.anko:anko-appcompat-v7:0.9.1'
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:2.10"
+    kapt "com.google.dagger:dagger-compiler:2.10"
+
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.0"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:3.7.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.7.0"
+
+    // Realm
+    implementation "io.realm:realm-android:0.87.4"
+    kapt "io.realm:realm-annotations:0.87.4"
+    kapt "io.realm:realm-annotations-processor:0.87.4"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.2.0"
+
+    // RxJava & RxAndroid
+    compile "io.reactivex:rxjava:1.2.9"
+    compile "io.reactivex:rxandroid:1.2.1"
+
+    // RxBindings
+    implementation "com.jakewharton.rxbinding2:rxbinding:2.0.0"
+    kapt "com.android.databinding:compiler:1.0-rc4"
+
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.5.1'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.0.0'
+
+    // Calligraphy
+    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+}
+
+
+kapt {
+    generateStubs = true
+}
