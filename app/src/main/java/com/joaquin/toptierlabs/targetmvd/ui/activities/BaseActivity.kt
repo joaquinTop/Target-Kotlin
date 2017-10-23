@@ -7,7 +7,6 @@ import android.view.WindowManager
 import com.joaquin.toptierlabs.targetmvd.R
 
 
-
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -1,5 +1,6 @@
 package com.joaquin.toptierlabs.targetmvd.ui.components
 
+import android.support.design.widget.TextInputLayout
 import android.support.v7.widget.AppCompatEditText
 import android.text.InputType
 import android.view.Gravity
@@ -9,7 +10,6 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.joaquin.toptierlabs.targetmvd.R
 import com.joaquin.toptierlabs.targetmvd.ui.activities.SignInActivity
-import com.joaquin.toptierlabs.targetmvd.ui.components.custom.customAlert
 import com.joaquin.toptierlabs.targetmvd.ui.components.custom.customLoading
 import com.joaquin.toptierlabs.targetmvd.utils.*
 import org.jetbrains.anko.*
@@ -21,6 +21,8 @@ class SignInView : AnkoComponent<SignInActivity> {
     lateinit var email: AppCompatEditText
     lateinit var password: AppCompatEditText
     lateinit var spinner: RelativeLayout
+    lateinit var tilemail: TextInputLayout
+    lateinit var tilPassword: TextInputLayout
 //    lateinit var spinner: AlertDialog
 
     override fun createView(ui: AnkoContext<SignInActivity>) = with(ui) {
@@ -45,7 +47,7 @@ class SignInView : AnkoComponent<SignInActivity> {
             relativeLayout {
                 linearLayout {
                     id = R.id.signInUsernameWrapper
-                    textInputLayout {
+                    tilemail = textInputLayout {
                         layoutParams = LinearLayout.LayoutParams(
                                 ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -57,8 +59,12 @@ class SignInView : AnkoComponent<SignInActivity> {
                             textColor = resources.getColor(R.color.defaultTextColor)
                             inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                             singleLine = true
-                            typeface = regular
                             textSize = 18f
+                            textChangedListener {
+                                onTextChanged { text, start, before, count ->
+                                    tilemail.isErrorEnabled = false
+                                }
+                            }
                         }
                     }
 
@@ -69,7 +75,7 @@ class SignInView : AnkoComponent<SignInActivity> {
 
                 linearLayout {
                     id = R.id.signInPasswordWrapper
-                    textInputLayout {
+                    tilPassword = textInputLayout {
                         layoutParams = LinearLayout.LayoutParams(
                                 ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -83,8 +89,12 @@ class SignInView : AnkoComponent<SignInActivity> {
                             singleLine = true
                             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                             textColor = resources.getColor(R.color.defaultTextColor)
-                            typeface = regular
                             textSize = 18f
+                            textChangedListener {
+                                onTextChanged { text, start, before, count ->
+                                    tilPassword.isErrorEnabled = false
+                                }
+                            }
                         }
                     }
                 }.lparams {
@@ -161,6 +171,9 @@ class SignInView : AnkoComponent<SignInActivity> {
                     textSize = 14f
                     textColor = resources.getColor(R.color.defaultTextColor)
                     typeface = semibold
+                    onClick {
+                        handleOnSignUpButtonPressed(ui = ui)
+                    }
                 }.lparams {
                     width = wrapContent
                     height = wrapContent
@@ -185,19 +198,19 @@ class SignInView : AnkoComponent<SignInActivity> {
     }
 
     private fun handleOnSignInButtonPressed(ui: AnkoContext<SignInActivity>, username: String, password: String) {
-        if (username.isBlank() || password.isBlank()) {
-            with(ui) {
-                ui.alert {
-                    customView {
-                        customAlert(R.string.sigIn_alert_invalid_user_title,
-                                R.string.sigIn_alert_invalid_user_message,
-                                R.string.dialog_button_close)
-                    }
-                }.show()
-            }
+        if (username.isBlank()) {
+            tilemail.isErrorEnabled = true
+            tilemail.error = ui.ctx.getString(R.string.error_invalid_email);
+        } else if (password.isBlank()) {
+            tilPassword.isErrorEnabled = true
+            tilPassword.error = ui.ctx.getString(R.string.error_invalid_password);
         } else {
             spinner.visibility = View.VISIBLE
             ui.owner.authorizeUser(username, password)
         }
+    }
+
+    private fun handleOnSignUpButtonPressed(ui: AnkoContext<SignInActivity>) {
+        ui.owner.openSignUp()
     }
 }

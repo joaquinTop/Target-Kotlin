@@ -3,13 +3,14 @@ package com.joaquin.toptierlabs.targetmvd.models
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 
 @RealmClass
 open class User: RealmObject() {
-
-    @PrimaryKey
+    /*  @PrimaryKey
+      @SerializedName("user_id")
+      open var mUserId: String? = null      */
+    
     @SerializedName("email")
     @Expose
     open var mEmail: String? = null

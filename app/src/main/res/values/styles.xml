@@ -38,7 +38,7 @@
 
     <style name="AppTextAppearanceError" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/errorRed</item>
-        <item name="android:textSize">12sp</item>
+      <item name="android:textSize">14sp</item>
     </style>
 
     <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog">
@@ -70,5 +70,23 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+  <style name="TextStyle" parent="TextAppearance.AppCompat">
+    <!-- Hint color and label color in FALSE state -->
+    <item name="android:textColorHintInverse">@android:color/primary_text_light</item>
+    <item name="android:completionHint">@android:color/primary_text_light</item>
+    <item name="android:textColorHint">@android:color/primary_text_light</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:maxLines">1</item>
+    <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+  <style name="AppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
 
 </resources>

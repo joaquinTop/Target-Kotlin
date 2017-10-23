@@ -4,7 +4,6 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewManager
 import com.joaquin.toptierlabs.targetmvd.R
-import com.joaquin.toptierlabs.targetmvd.utils.regular
 import org.jetbrains.anko.*
 
 fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: Int): View {
@@ -13,7 +12,6 @@ fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: I
             textResource = titleRes
             textColor = resources.getColor(R.color.colorSecondary)
             textSize = 20f
-            typeface = regular
         }.lparams {
             width = wrapContent
             height = wrapContent
@@ -25,7 +23,6 @@ fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: I
             textResource = messageRes
             textColor = resources.getColor(R.color.defaultTextColor)
             textSize = 14f
-            typeface = regular
         }.lparams {
             width = wrapContent
             height = wrapContent
@@ -38,7 +35,6 @@ fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: I
             textColor = resources.getColor(R.color.colorSecondary)
             textSize = 14f
             onClick {  }
-            typeface = regular
         }.lparams {
             gravity = Gravity.END
             topMargin = dip(20)

@@ -9,6 +9,7 @@ import com.joaquin.toptierlabs.targetmvd.models.ApiError
 import com.joaquin.toptierlabs.targetmvd.models.User
 import com.joaquin.toptierlabs.targetmvd.models.responses.SignInResponse
 import com.joaquin.toptierlabs.targetmvd.serializers.UserSerializer
+import com.joaquin.toptierlabs.targetmvd.ui.MapsActivity
 import com.joaquin.toptierlabs.targetmvd.ui.components.SignInView
 import com.joaquin.toptierlabs.targetmvd.utils.RxBus
 import org.jetbrains.anko.setContentView
@@ -16,7 +17,7 @@ import org.jetbrains.anko.toast
 
 class SignInActivity : BaseActivity() {
 
-    lateinit var mainUI : SignInView
+    private lateinit var mainUI: SignInView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +38,19 @@ class SignInActivity : BaseActivity() {
     }
 
     private fun setListeners() {
-        RxBus.listen(SignInResponse::class.java).subscribe({ response ->
-            mainUI.spinner.visibility = View.INVISIBLE
-            startActivity(Intent(this, HomeActivity::class.java))
-        })
-        RxBus.listen(ApiError::class.java).subscribe({ error ->
-            mainUI.spinner.visibility = View.INVISIBLE
-            toast(R.string.signInError)
-        })
+        RxBus.listen(SignInResponse::class.java).subscribe(
+                { response ->
+                    mainUI.spinner.visibility = View.INVISIBLE
+                    startActivity(Intent(this, MapsActivity::class.java))
+                })
+        RxBus.listen(ApiError::class.java).subscribe(
+                { error ->
+                    mainUI.spinner.visibility = View.INVISIBLE
+                    toast(R.string.signInError)
+                })
+    }
+
+    fun openSignUp() {
+        startActivity(Intent(this, UpNavigatorActivity::class.java))
     }
 }

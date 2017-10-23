@@ -11,7 +11,7 @@ import rx.Observable
 interface AuthenticationService {
 
     @POST("users")
-    fun signUp(@Body user: UserSerializer): Call<UserSerializer>
+    fun signUp(@Body user: UserSerializer): Observable<SignInResponse>
 
     @POST("users/sign_in")
     fun signIn(@Body user: UserSerializer): Observable<SignInResponse>

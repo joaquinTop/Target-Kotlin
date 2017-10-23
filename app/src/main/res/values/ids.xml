@@ -12,4 +12,15 @@
     <item name="appTitleTextView" type="id" />
     <item name="signInSeparator" type="id" />
     <item name="signUpLink" type="id" />
+
+  <item name="signUpUsernameWrapper" type="id"/>
+  <item name="signUpBackgroundImage" type="id"/>
+  <item name="signUpPasswordWrapper" type="id"/>
+  <item name="signReEnterPasswordWrapper" type="id"/>
+
+  <item name="toolbar_layout" type="id"/>
+  <item name="item_detail_container" type="id"/>
+  <id name="signUpName" type="id"/>
+  <id name="signUpGender" type="id"/>
+  <id name="signUpGenderWrapper" type="id"/>
 </resources>
