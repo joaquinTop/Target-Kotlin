@@ -23,7 +23,6 @@ class SignInView : AnkoComponent<SignInActivity> {
     lateinit var spinner: RelativeLayout
     lateinit var tilemail: TextInputLayout
     lateinit var tilPassword: TextInputLayout
-//    lateinit var spinner: AlertDialog
 
     override fun createView(ui: AnkoContext<SignInActivity>) = with(ui) {
 
@@ -126,7 +125,7 @@ class SignInView : AnkoComponent<SignInActivity> {
                     id = R.id.forgotYourPassword
                     textResource = R.string.forgot_your_password_text
                     textSize = 14f
-                    textColor = resources.getColor(R.color.defaultTextColor)
+                    textColor = color(R.color.defaultTextColor)
                     typeface = semibold
                 }.lparams {
                     width = wrapContent
@@ -140,8 +139,11 @@ class SignInView : AnkoComponent<SignInActivity> {
                     id = R.id.connectWithFacebook
                     textResource = R.string.connect_with_facebook_text
                     textSize = 14f
-                    textColor = resources.getColor(R.color.facebookPrimaryColor)
+                    textColor = color(R.color.facebookPrimaryColor)
                     typeface = bold
+                    onClick {
+                        handleConnectFacebookPressed(ui = ui)
+                    }
                 }.lparams {
                     width = wrapContent
                     height = wrapContent
@@ -169,7 +171,7 @@ class SignInView : AnkoComponent<SignInActivity> {
                     id = R.id.signUpLink
                     textResource = R.string.sign_up_text
                     textSize = 14f
-                    textColor = resources.getColor(R.color.defaultTextColor)
+                    textColor = color(R.color.defaultTextColor)
                     typeface = semibold
                     onClick {
                         handleOnSignUpButtonPressed(ui = ui)
@@ -212,5 +214,9 @@ class SignInView : AnkoComponent<SignInActivity> {
 
     private fun handleOnSignUpButtonPressed(ui: AnkoContext<SignInActivity>) {
         ui.owner.openSignUp()
+    }
+
+    private fun handleConnectFacebookPressed(ui: AnkoContext<SignInActivity>) {
+        ui.owner.openFacebook()
     }
 }

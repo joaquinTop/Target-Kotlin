@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.joaquin.toptierlabs.targetmvd">
+          package="com.joaquin.toptierlabs.targetmvd">
 
   <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -41,6 +41,7 @@
       android:name=".ui.activities.UpNavigatorActivity"
       android:theme="@style/AppTheme.NoActionBar"/>
 
+
     <activity android:name=".ui.activities.HomeActivity"/>
     <!--
          The API key for Google Maps-based APIs is defined as a string resource.
@@ -55,12 +56,8 @@
       android:value="@string/google_maps_key"/>
 
     <activity
-      android:name=".ui.MapsActivity"
-      android:label="@string/title_activity_maps">
-    </activity>
-    <activity
-      android:name=".ui.SettingsActivity"
-      android:label="@string/title_activity_settings">
+        android:name=".ui.activities.MapsActivity"
+        android:label="@string/title_activity_maps">
     </activity>
     </application>
 

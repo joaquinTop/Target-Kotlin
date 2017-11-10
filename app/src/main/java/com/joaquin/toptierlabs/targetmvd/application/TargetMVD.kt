@@ -13,7 +13,7 @@ val prefs: Prefs by lazy {
     TargetMVD.prefs!!
 }
 
-private open class TargetMVD : Application() {
+open class TargetMVD : Application() {
 
     private val DEFAULT_FONT_PATH = "fonts/OpenSans-Regular.ttf"
 

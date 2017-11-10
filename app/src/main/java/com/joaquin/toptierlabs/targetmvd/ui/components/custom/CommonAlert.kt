@@ -4,13 +4,14 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewManager
 import com.joaquin.toptierlabs.targetmvd.R
+import com.joaquin.toptierlabs.targetmvd.utils.color
 import org.jetbrains.anko.*
 
 fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: Int): View {
     return verticalLayout {
         textView {
             textResource = titleRes
-            textColor = resources.getColor(R.color.colorSecondary)
+            textColor = color(R.color.colorSecondary)
             textSize = 20f
         }.lparams {
             width = wrapContent
@@ -21,7 +22,7 @@ fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: I
         }
         textView {
             textResource = messageRes
-            textColor = resources.getColor(R.color.defaultTextColor)
+            textColor = color(R.color.defaultTextColor)
             textSize = 14f
         }.lparams {
             width = wrapContent
@@ -32,7 +33,7 @@ fun ViewManager.customAlert(titleRes: Int, messageRes: Int, positiveButtonRes: I
         }
         textView {
             textResource = positiveButtonRes
-            textColor = resources.getColor(R.color.colorSecondary)
+            textColor = color(R.color.colorSecondary)
             textSize = 14f
             onClick {  }
         }.lparams {

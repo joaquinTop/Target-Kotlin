@@ -22,7 +22,6 @@ object Authentication {
                 .subscribe(
                         { response ->
                             // TODO JG: SET PREFERRED USER
-
                             realm.beginTransaction()
                             realm.commitTransaction()
                             RxBus.publish(response)

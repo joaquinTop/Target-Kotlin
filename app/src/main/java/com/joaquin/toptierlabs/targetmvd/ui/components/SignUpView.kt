@@ -21,11 +21,8 @@ import org.jetbrains.anko.*
 /**
  * Created by Santiago Cirillo on 10/16/17.
  */
-class SignUpView : ViewBinder<SignUpFragment> {
-    override fun unbind(t: SignUpFragment) {
-
-    }
-
+class SignUpView : ViewBinder<SignUpFragment, User> {
+    override fun unbind(t: SignUpFragment) {}
     // UI Refs
     lateinit var mEmail: AppCompatEditText
     lateinit var mPassword: AppCompatEditText
@@ -39,9 +36,8 @@ class SignUpView : ViewBinder<SignUpFragment> {
     lateinit var tilName: TextInputLayout
     lateinit var gender: Spinner
     lateinit var selectedGender: String
-    lateinit var user: User
 
-    override fun bind(t: SignUpFragment): View {
+    override fun bind(t: SignUpFragment, u: User): View {
         return t.activity.UI {
             relativeLayout {
                 lparams(width = matchParent, height = matchParent)
@@ -70,9 +66,8 @@ class SignUpView : ViewBinder<SignUpFragment> {
                         }
                     }.lparams {
                         width = dip(250)
-                        topMargin = dip(30)
+                        topMargin = dip(60)
                     }
-
                     linearLayout {
                         tilPassword = textInputLayout {
                             layoutParams = LinearLayout.LayoutParams(
@@ -95,7 +90,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
                         }
                     }.lparams {
                         width = dip(250)
-                        topMargin = dip(30)
+                        topMargin = dip(20)
                     }
                     linearLayout {
                         tilRePassword = textInputLayout {
@@ -119,7 +114,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
                         }
                     }.lparams {
                         width = dip(250)
-                        topMargin = dip(30)
+                        topMargin = dip(20)
                     }
                     linearLayout {
                         tilName = textInputLayout {
@@ -143,7 +138,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
                         }
                     }.lparams {
                         width = dip(250)
-                        topMargin = dip(30)
+                        topMargin = dip(20)
                     }
                     linearLayout {
                         id = R.id.signUpGender
@@ -168,7 +163,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
                         }
                     }.lparams {
                         width = dip(250)
-                        topMargin = dip(30)
+                        topMargin = dip(20)
                     }
                     linearLayout {
                         lparams(width = wrapContent, height = matchParent)
@@ -179,7 +174,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
                             typeface = semibold
                             backgroundResource = R.drawable.selector_button_dark
                             onClick {
-                                handleOnSignUpButtonPressed(t,
+                                handleOnSignUpButtonPressed(t, u,
                                         email = mEmail.text.toString(),
                                         password = mPassword.text.toString(),
                                         passwordConfirmation = mPasswordConfirmation.text.toString(),
@@ -188,7 +183,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
                             }
                         }
                     }.lparams {
-                        bottomMargin = dip(60)
+                        bottomMargin = dip(10)
                     }
                 }
                 spinner = customLoading().lparams {
@@ -201,7 +196,7 @@ class SignUpView : ViewBinder<SignUpFragment> {
         }.view
     }
 
-    private fun handleOnSignUpButtonPressed(ui: SignUpFragment, email: String, password: String,
+    private fun handleOnSignUpButtonPressed(ui: SignUpFragment, user: User, email: String, password: String,
                                             passwordConfirmation: String, name: String, gender: String) {
         when (checkUserFields(email, password, passwordConfirmation, name, gender)) {
             Exception.EMAIL_ERROR -> {
@@ -221,13 +216,12 @@ class SignUpView : ViewBinder<SignUpFragment> {
                 mName.requestFocus()
             }
             Exception.VALID_USER -> {
-                user = User()
                 user.mEmail = email
                 user.mPassword = password
                 user.mPasswordConfirmation = passwordConfirmation
                 user.mName = name
                 user.mGender = gender
-                ui.signUp(user);
+                ui.signUp(user)
             }
         }
     }

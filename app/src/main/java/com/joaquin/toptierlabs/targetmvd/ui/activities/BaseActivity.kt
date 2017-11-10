@@ -1,5 +1,7 @@
 package com.joaquin.toptierlabs.targetmvd.ui.activities
 
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -15,19 +17,20 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
-                return true
+                true
             }
             R.id.about -> {
                 about()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     protected fun setStatusBarTranslucent(makeTranslucent: Boolean) {
         if (makeTranslucent) {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

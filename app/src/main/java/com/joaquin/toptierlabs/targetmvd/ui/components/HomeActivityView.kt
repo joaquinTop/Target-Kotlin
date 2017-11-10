@@ -13,8 +13,6 @@ class HomeActivityView : AnkoComponent<SignInActivity> {
         relativeLayout {
             lparams(width = matchParent, height = matchParent)
             backgroundResource = R.color.primaryBackgroundColor
-
-
         }
     }
 

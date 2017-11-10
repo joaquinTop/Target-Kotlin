@@ -20,7 +20,13 @@
 
   <item name="toolbar_layout" type="id"/>
   <item name="item_detail_container" type="id"/>
-  <id name="signUpName" type="id"/>
+    <item name="imageProfile" type="id">imageProfile</item>
+    <item name="headerCoverImage" type="id">headerCoverImage</item>
+    <item name="userProfilePhoto" type="id">userProfilePhoto</item>
+    <item name="profileLayout" type="id">profileLayout</item>
+    <item name="profileName" type="id">profileName</item>
+    <id name="signUpName" type="id"/>
   <id name="signUpGender" type="id"/>
   <id name="signUpGenderWrapper" type="id"/>
+    <id name="profileLogOut" type="id"/>
 </resources>

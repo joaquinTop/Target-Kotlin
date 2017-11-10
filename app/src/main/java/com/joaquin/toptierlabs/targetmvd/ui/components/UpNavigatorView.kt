@@ -2,6 +2,7 @@ package com.joaquin.toptierlabs.targetmvd.ui.components
 
 import android.view.View
 import com.joaquin.toptierlabs.targetmvd.R
+import com.joaquin.toptierlabs.targetmvd.models.User
 import com.joaquin.toptierlabs.targetmvd.ui.activities.UpNavigatorActivity
 import com.joaquin.toptierlabs.targetmvd.utils.ViewBinder
 import org.jetbrains.anko.*
@@ -13,8 +14,8 @@ import org.jetbrains.anko.design.coordinatorLayout
  * Created by Santiago Cirillo on 10/17/17.
  */
 
-internal class UpNavigatorView : ViewBinder<UpNavigatorActivity> {
-    override fun bind(t: UpNavigatorActivity): View {
+internal class UpNavigatorView : ViewBinder<UpNavigatorActivity, User> {
+    override fun bind(t: UpNavigatorActivity, u: User): View {
         return t.UI {
             coordinatorLayout {
                 lparams(width = matchParent, height = matchParent)
@@ -22,7 +23,6 @@ internal class UpNavigatorView : ViewBinder<UpNavigatorActivity> {
                     lparams(width = matchParent, height = wrapContent)
                     t.toolbar = toolbar {
                         id = R.id.toolbar_layout
-                        //  popupTheme = R.style.AppTheme_PopupOverlay
                         backgroundColor = R.color.colorPrimary
                         t.setSupportActionBar(this)
                         t.supportActionBar?.setDisplayHomeAsUpEnabled(true)

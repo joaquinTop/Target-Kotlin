@@ -105,4 +105,6 @@
   <string name="sign_up_name">Name</string>
   <string name="error_invalid_re_password">The passwords doest match</string>
   <string name="error_invalid_name">Name cant be empty</string>
+    <string name="log_out">Log out</string>
+    <string name="profile_save">Save</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.joaquin.toptierlabs.targetmvd.ui
+package com.joaquin.toptierlabs.targetmvd.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

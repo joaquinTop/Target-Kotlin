@@ -9,7 +9,6 @@ import com.joaquin.toptierlabs.targetmvd.models.ApiError
 import com.joaquin.toptierlabs.targetmvd.models.User
 import com.joaquin.toptierlabs.targetmvd.models.responses.SignInResponse
 import com.joaquin.toptierlabs.targetmvd.serializers.UserSerializer
-import com.joaquin.toptierlabs.targetmvd.ui.MapsActivity
 import com.joaquin.toptierlabs.targetmvd.ui.components.SignInView
 import com.joaquin.toptierlabs.targetmvd.utils.RxBus
 import org.jetbrains.anko.setContentView
@@ -23,8 +22,6 @@ class SignInActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mainUI = SignInView()
         mainUI.setContentView(this)
-
-        setStatusBarTranslucent(true)
         setListeners()
     }
 
@@ -47,10 +44,20 @@ class SignInActivity : BaseActivity() {
                 { error ->
                     mainUI.spinner.visibility = View.INVISIBLE
                     toast(R.string.signInError)
+                    mainUI.spinner.visibility = View.INVISIBLE
+                    startActivity(Intent(this, MapsActivity::class.java))
                 })
     }
 
     fun openSignUp() {
-        startActivity(Intent(this, UpNavigatorActivity::class.java))
+        val intent = Intent(this, UpNavigatorActivity::class.java)
+        intent.putExtra(NAVIGATE_TO, FRAGMENT_SIGN_UP)
+        startActivity(intent)
+    }
+
+    fun openFacebook() {
+        val intent = Intent(this, UpNavigatorActivity::class.java)
+        intent.putExtra(NAVIGATE_TO, FRAGMENT_PROFILE)
+        startActivity(intent)
     }
 }
